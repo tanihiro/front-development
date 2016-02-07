@@ -46,7 +46,6 @@ module.exports = {
       dest: dist
     },
     autoprefixer: { browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'] },
-    minify: { keepSpecialComments: 1, roundingPrecision: 4 },
     libsass: {
       includePaths: ['./src/scss', bower, modules],
       precision: 6,

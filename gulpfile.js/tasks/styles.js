@@ -17,7 +17,7 @@ gulp.task('styles-libsass', function() {
 
 gulp.task('styles-dist', ['utils-dist'], function() {
   return gulp.src(config.dist.src)
-    .pipe(plugins.minifyCss(config.minify))
+    .pipe(plugins.cssnano())
     .pipe(gulp.dest(config.dist.dest));
 });
 
