@@ -4,7 +4,7 @@ var path    = require("path");
 var webpack = require("webpack");
 
 // Project paths
-var project  = 'PROJECT NAME';
+var project  = 'wishlist';
 var src      = './src/';
 var build    = './build/';
 var dist     = './dist/' + project + '/';
@@ -14,6 +14,10 @@ var modules  = './node_modules/';
 
 // Project settings
 module.exports = {
+  html: {
+    src: [src + '**/*.ejs', '!' + src + '**/_*.ejs'],
+    dest: build
+  },
   images: {
     build: {
       src: src + 'img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)',
@@ -78,6 +82,7 @@ module.exports = {
       scripts:    src + 'js/**/*.js',
       images:     src + '**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)',
       theme:      src + '**/*.php',
+      html:       src + '**/*.ejs',
       livereload: build + '**/*'
     }
   },
@@ -108,5 +113,8 @@ module.exports = {
         $: 'jquery'
       })
     ]
+  },
+  webserver: {
+    src: build
   }
 };

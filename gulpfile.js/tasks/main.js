@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['webserver']);
 
 // Build a working copy of the theme
 gulp.task('build', ['images', 'scripts', 'styles', 'theme']);
