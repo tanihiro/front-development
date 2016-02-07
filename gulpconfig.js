@@ -4,7 +4,7 @@ var path    = require("path");
 var webpack = require("webpack");
 
 // Project paths
-var project  = 'turn';
+var project  = 'PROJECT NAME';
 var src      = './src/';
 var build    = './build/';
 var dist     = './dist/' + project + '/';
@@ -90,7 +90,6 @@ module.exports = {
       filename: '[name].bundle.min.js'
     },
     resolve: {
-      root: [path.join(__dirname, 'bower_components')],
       extensions: ['', '.js']
     },
     module: {
@@ -103,7 +102,11 @@ module.exports = {
       ]
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin()
+      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.ProvidePlugin({
+        jQuery: "jquery",
+        $: 'jquery'
+      })
     ]
   }
 };
