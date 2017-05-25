@@ -3,7 +3,9 @@
 var gulp    = require('gulp');
 var plugins = require('gulp-load-plugins')({ camelize: true });
 var config  = require('../../gulpconfig').scripts;
-var webpack = require('../../gulpconfig').webpack;
+
+var webpack = require('webpack-stream');
+var webpackConfig = require('../../gulpconfig').webpack;
 
 gulp.task('scripts-lint', function() {
   return gulp.src(config.src)
@@ -15,6 +17,6 @@ gulp.task('scripts-lint', function() {
 gulp.task('scripts', ['scripts-lint'], function() {
   return gulp.src(config.src)
     .pipe(plugins.plumber())
-    .pipe(plugins.webpack(webpack))
+    .pipe(webpack(webpackConfig))
     .pipe(gulp.dest(config.dest));
 });
