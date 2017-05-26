@@ -56,11 +56,11 @@ module.exports = {
   },
   theme: {
     lang: {
-      src:  src + 'languages/**/*', 
+      src:  src + 'languages/**/*',
       dest: build + 'languages/'
-    }, 
+    },
     php: {
-      src: src + '**/*.php', 
+      src: src + '**/*.php',
       dest: build
     }
   },
@@ -108,5 +108,14 @@ module.exports = {
         $: 'jquery'
       })
     ]
+  },
+  webserver: {
+    src: build,
+    args: {
+        host: 'localhost',
+        port: '8000',
+        livereload: true,
+        open: true
+    }
   }
 };
