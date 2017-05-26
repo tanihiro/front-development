@@ -6,5 +6,5 @@ var config  = require('../../gulpconfig').webserver;
 
 gulp.task('webserver', ['watch'], function() {
   return gulp.src(config.src)
-    .pipe(plugins.webserver(config.args));
+    .pipe(plugins.webserver(config.option));
 });

@@ -14,6 +14,20 @@ var modules  = './node_modules/';
 
 // Project settings
 module.exports = {
+  build: [
+    'images',
+    'scripts',
+    'styles',
+    'html'
+    //'theme'
+  ],
+  html: {
+    src: [src + '**/*.pug', '!' + src + '**/_*.pug'],
+    dest: build,
+    option: {
+      pretty: true
+    }
+  },
   images: {
     build: {
       src: src + 'img/**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)',
@@ -111,11 +125,11 @@ module.exports = {
   },
   webserver: {
     src: build,
-    args: {
-        host: 'localhost',
-        port: '8000',
-        livereload: true,
-        open: true
+    option: {
+      host: 'localhost',
+      port: '8000',
+      livereload: true,
+      open: true
     }
   }
 };
