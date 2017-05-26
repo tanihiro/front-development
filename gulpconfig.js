@@ -89,22 +89,22 @@ module.exports = {
   watch: {
     src: {
       styles:     src + 'scss/**/*.scss',
-      scripts:    src + 'js/**/*.js',
+      scripts:    src + 'js/**/*(*.js|*.ts)',
       images:     src + '**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)',
       theme:      src + '**/*.php',
       livereload: build + '**/*'
     }
   },
   webpack: {
-    devtool: "#source-map",
+    devtool: "source-map",
     entry: {
-      index: src + 'js/index.js'
+      main: src + 'js/main.ts'
     },
     output: {
       filename: '[name].bundle.min.js'
     },
     resolve: {
-      extensions: ['', '.js']
+      extensions: ['', '.ts', '.tsx', '.js']
     },
     module: {
       loaders: [
@@ -112,15 +112,20 @@ module.exports = {
           test: /\.js$/,
           exclude: /node_modules/,
           loader: 'babel'
+        },
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          loader: 'ts-loader'
         }
       ]
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin(),
-      new webpack.ProvidePlugin({
-        jQuery: "jquery",
-        $: 'jquery'
-      })
+      new webpack.optimize.UglifyJsPlugin()
+      //new webpack.ProvidePlugin({
+      //  jQuery: "jquery",
+      //  $: 'jquery'
+      //})
     ]
   },
   webserver: {
